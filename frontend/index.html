@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI FAQ Assistant</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>AI FAQ Assistant</h1>
+    <div id="authStatus" class="auth-status"></div>
+  </header>
+
+  <main class="container">
+
+    <!-- AUTH SECTION -->
+    <section id="authSection" class="card">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <form id="loginForm" class="tab-panel active">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="registerForm" class="tab-panel">
+        <input type="text" id="registerName" placeholder="Name" required />
+        <input type="email" id="registerEmail" placeholder="Email" required />
+        <input type="password" id="registerPassword" placeholder="Password (min 6 chars)" required />
+        <button type="submit">Register</button>
+      </form>
+
+      <p id="authMessage" class="message"></p>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="card">
+      <h2>Search FAQs</h2>
+      <div class="search-row">
+        <input type="text" id="searchInput" placeholder="Search by keyword..." />
+        <button id="searchBtn">Search</button>
+        <button id="clearSearchBtn" class="secondary">Clear</button>
+      </div>
+    </section>
+
+    <!-- AI GENERATE (only visible when logged in) -->
+    <section id="aiSection" class="card hidden">
+      <h2>Generate FAQ with AI</h2>
+      <div class="search-row">
+        <input type="text" id="aiTopic" placeholder="Topic, e.g. 'resetting your password'" />
+        <button id="generateBtn">Generate</button>
+      </div>
+      <div id="aiResult" class="ai-result hidden">
+        <p><strong>Question:</strong> <span id="aiQuestion"></span></p>
+        <p><strong>Answer:</strong> <span id="aiAnswer"></span></p>
+        <p><strong>Category:</strong> <span id="aiCategory"></span></p>
+        <button id="saveAiFaqBtn">Save as FAQ</button>
+      </div>
+    </section>
+
+    <!-- CREATE FAQ (only visible when logged in) -->
+    <section id="createSection" class="card hidden">
+      <h2>Create a New FAQ</h2>
+      <form id="createFaqForm">
+        <input type="text" id="newQuestion" placeholder="Question" required />
+        <textarea id="newAnswer" placeholder="Answer" required></textarea>
+        <input type="text" id="newCategory" placeholder="Category" required />
+        <button type="submit">Add FAQ</button>
+      </form>
+    </section>
+
+    <!-- FAQ LIST -->
+    <section class="card">
+      <h2>FAQs</h2>
+      <div id="faqList" class="faq-list"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
